@@ -51,3 +51,29 @@ The object has the following fields and methods:
   Returns the body as JSON object, or throws an error if the body is not a json object.
 - `text()` *string*  
   Returns the body
+
+## UUID
+
+This module provides functionality to generate a UUID
+
+### Import
+
+```js
+    let uuid = require("zitadel/uuid")
+```
+
+### `uuid.vX()` function
+
+This function generates a UUID using [google/uuid](https://github.com/google/uuid). `vX` allows to define the UUID version. For instance `uuid.v4()`
+
+### Example
+```js
+let uuid = require("zitadel/uuid")
+function log(ctx, api) {
+  if (api.metadata === undefined) {
+    return;
+  }
+
+  api.v1.user.appendMetadata('custom-id', uuid.v4());
+}
+```
